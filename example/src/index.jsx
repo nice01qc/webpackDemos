@@ -42,7 +42,9 @@ let store = createStore(chatReducer);  // 这个不说了
 render((
     <Provider store={store}>
         <TestRudux1 />
+
         <hr />
+        
         <NewTestRedux2 />
     </Provider>
 ), document.getElementById("root"));
