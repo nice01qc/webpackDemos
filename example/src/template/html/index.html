@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="<%= htmlWebpackPlugin.files.favicon %>" type="image/x-icon" />
+    <!-- 引入在线资源 -->
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <% for (var item in htmlWebpackPlugin.files.css) { %>
+        <% if (item.indexOf('css') != -1) { %>
+            <link href="<%=item %>" rel="stylesheet">
+        <% } %>
+    <% } %>
+
+</head>
+<body>
+
+    <div id="root"></div>
+    <div id="weiyi"></div>
+
+    <% for (var item in htmlWebpackPlugin.files.js) { %>
+        <% if (item.indexOf('js') != -1) { %>
+            <script type="text/javascript" src="<%=item %>"></script>
+        <% } %>
+    <% } %>
+
+
+
+<!--<hr/><div><%= JSON.stringify(htmlWebpackPlugin) %></div>-->
+</body>
+</html>
