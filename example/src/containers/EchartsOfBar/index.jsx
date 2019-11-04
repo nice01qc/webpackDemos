@@ -32,6 +32,10 @@ class EchartsOfBar extends Component {
         return (
             <div>
                 <div id="mychart1" style={{ width: 400, height: 400 }}></div>
+                <h2>这是通过/echarts/:type 和 history.push传过来的值！ 请一一对应看！</h2>
+                <h3>this.props.match.params: {JSON.stringify(this.props.match.params)}</h3><br/>
+                <h3>this.props.location: {JSON.stringify(this.props.location)}</h3><br/>
+                <h3>ALL: {JSON.stringify(this.props)}</h3><br/>
             </div>
         );
     }

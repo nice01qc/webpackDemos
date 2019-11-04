@@ -1,30 +1,25 @@
 import React from "react";
-import axios from "axios";
 import {Link } from "react-router-dom";
-import {Route} from "react-router"
+import {Route} from "react-router";
+import routes from "../../router/routes";   // 这是自定义的一个数组
 import AntOfMenu from "../AntOfMenu";
 import EchartsOfBar from "../EchartsOfBar";
 class App extends React.Component {
 
-    componentWillMount() {
-        // axios.get('/demo/date?date=2019-03-12%2009:10:01')
-        //     .then(function (response) {
-        //         // handle success
-        //         console.log(response.data);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
-    }
-
     render() {
         return (
             <div>
-                <Link to="/reactRouterDemo/ant"> ant组件示例 </Link><br/>
-                <Link to="/reactRouterDemo/echarts"> echarts组件示例 </Link><br/>
+                <Link to="/ant"> ant组件示例 </Link><br/>
+                <Link to="/echarts/bar"> echarts组件示例 </Link><br/>
 
-                <Route path="/reactRouterDemo/ant" component={AntOfMenu} />
-                <Route path="/reactRouterDemo/echarts" component={EchartsOfBar} />
+                {/*{// 不建议这么写， 最好集中处理，好修改}*/}
+                {/*<Route path="/ant" component={AntOfMenu} />*/}
+                {/*<Route path="/echarts/:type" component={EchartsOfBar} />*/}
+
+                {/*// 建议这么写*/}
+                {routes.map(route => (
+                    <Route key={route.path} exact path={route.path} component={route.chunk()} />
+                ))}
 
             </div>
         );

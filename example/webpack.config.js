@@ -1,11 +1,6 @@
 const path = require('path')
-const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, 'src');
-
-
-// 用于精简js代码
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 // 生成 html
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -16,9 +11,6 @@ const myCDN_URL = "";
 module.exports = {
     entry: {
         index: './src/index.jsx',
-        other: './src/other.jsx',
-        reduxDemo: './src/reduxDemo.jsx',
-        reactRouterDemo: './src/reactRouterDemo.jsx',
     },
 
     output: {
@@ -71,27 +63,7 @@ module.exports = {
             template: path.join(__dirname, 'src/template/html/index.html'),
             chunks: ['index']
         }),
-        new HtmlWebpackPlugin({
-            filename: 'other.html',
-            title: "echarts & ant",
-            favicon: "./src/assert/img/atm-away.png",
-            template: path.join(__dirname, 'src/template/html/index.html'),
-            chunks: ['other']
-        }),
-        new HtmlWebpackPlugin({
-            filename: 'reduxDemo.html',
-            title: "reduxDemo",
-            favicon: "./src/assert/img/atm-away.png",
-            template: path.join(__dirname, 'src/template/html/index.html'),
-            chunks: ['reduxDemo']
-        }),
-        new HtmlWebpackPlugin({
-            filename: 'reactRouterDemo.html',
-            title: "reactRouterDemo",
-            favicon: "./src/assert/img/atm-away.png",
-            template: path.join(__dirname, 'src/template/html/index.html'),
-            chunks: ['reactRouterDemo']
-        })
+
     ],
 
 
@@ -106,15 +78,12 @@ module.exports = {
         host: "127.0.0.1", // 可以使用手机访问
         port: 8080,
         proxy: {
-            // 代理到后端的服务地址，会拦截所有以api开头的请求地址
+            // 代理到后端的服务地址，会拦截所有以api开头的请求地址，具体使用可以问我
             "/demo": "http://localhost:8081"
         },
         historyApiFallback: {
             rewrites: [
                 { from: /^\/$/, to: '/index.html' },
-                { from: /^\/other/, to: '/other.html' },
-                { from: /^\/reduxDemo/, to: '/reduxDemo.html' },
-                { from: /^\/reactRouterDemo/, to: '/reactRouterDemo.html' },
             ]
         }
     },
