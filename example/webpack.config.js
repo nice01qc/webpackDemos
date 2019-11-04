@@ -3,10 +3,6 @@ const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, 'src');
 
-
-// 用于精简js代码
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
 // 生成 html
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -16,9 +12,6 @@ const myCDN_URL = "";
 module.exports = {
     entry: {
         index: './src/index.jsx',
-        other: './src/other.jsx',
-        reduxDemo: './src/reduxDemo.jsx',
-        reactRouterDemo: './src/reactRouterDemo.jsx',
     },
 
     output: {
@@ -71,27 +64,7 @@ module.exports = {
             template: path.join(__dirname, 'src/template/html/index.html'),
             chunks: ['index']
         }),
-        new HtmlWebpackPlugin({
-            filename: 'other.html',
-            title: "echarts & ant",
-            favicon: "./src/assert/img/atm-away.png",
-            template: path.join(__dirname, 'src/template/html/index.html'),
-            chunks: ['other']
-        }),
-        new HtmlWebpackPlugin({
-            filename: 'reduxDemo.html',
-            title: "reduxDemo",
-            favicon: "./src/assert/img/atm-away.png",
-            template: path.join(__dirname, 'src/template/html/index.html'),
-            chunks: ['reduxDemo']
-        }),
-        new HtmlWebpackPlugin({
-            filename: 'reactRouterDemo.html',
-            title: "reactRouterDemo",
-            favicon: "./src/assert/img/atm-away.png",
-            template: path.join(__dirname, 'src/template/html/index.html'),
-            chunks: ['reactRouterDemo']
-        })
+
     ],
 
 
@@ -112,9 +85,6 @@ module.exports = {
         historyApiFallback: {
             rewrites: [
                 { from: /^\/$/, to: '/index.html' },
-                { from: /^\/other/, to: '/other.html' },
-                { from: /^\/reduxDemo/, to: '/reduxDemo.html' },
-                { from: /^\/reactRouterDemo/, to: '/reactRouterDemo.html' },
             ]
         }
     },
